@@ -41,7 +41,9 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void printStatement() {
         System.out.println("Date       || Amount  || Balance");
-        for(AccountStatus status : this.allStatus) {
+        int length = this.allStatus.size();
+        for(int i = length-1; i>=0; i--) {
+            AccountStatus status = this.allStatus.get(i);
             String dateString = Help.convertDateToString(status.getDate());
             //J'ai ajouté cette méthode parce qu'il faut régler le problème de la longueur des numéros (il faut que les numérosoccupent tous un même longueur opur que les `||` voient tous verticales.
             String amountString = Help.convertToStringAnfRespoctSpaces(status.getAmount(), 7);
